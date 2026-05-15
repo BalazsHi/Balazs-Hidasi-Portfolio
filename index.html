@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balázs Hidasi | Professional Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2B6CB0; 
+            --secondary-blue: #4299E1;
+            --light-blue: #EBF8FF;
+            --accent-grey: #4A5568; 
+            --bg-grey: #F7FAFC; 
+            --text-dark: #2D3748;
+            --text-grey: #718096;
+            --tile-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-grey);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0 0 2rem 0;
+            line-height: 1.6;
+        }
+
+        /* Top Banner with Background Image */
+        header {
+            text-align: center;
+            padding: 3.5rem 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(rgba(247, 250, 252, 0.88), rgba(247, 250, 252, 0.98)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 2.8rem; 
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        p.subtitle {
+            color: var(--accent-grey);
+            font-size: 1.1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        .reg-amp {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+            font-weight: 500;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+            .span-2 { grid-column: span 2; }
+        }
+
+        @media (min-width: 1080px) {
+            .grid-container { grid-template-columns: repeat(3, 1fr); }
+            .desk-span-1 { grid-column: span 1; }
+            .desk-span-2 { grid-column: span 2; }
+            .desk-span-3 { grid-column: span 3; }
+        }
+
+        .section-separator {
+            grid-column: 1 / -1; 
+            display: flex;
+            align-items: center;
+            margin: 2.5rem 0 0.5rem 0;
+        }
+
+        .section-separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #CBD5E0; 
+            margin-left: 1.5rem; 
+        }
+
+        .section-separator span {
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-grey); 
+            font-size: 1.05rem; 
+            font-weight: 600;
+        }
+
+        .tile {
+            background-color: var(--tile-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tile:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+            border-top-color: var(--secondary-blue);
+        }
+
+        .tile h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+            font-size: 1.5rem; 
+            letter-spacing: 0.3px;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #E2E8F0; 
+        }
+
+        .photo-tile { text-align: center; align-items: center; justify-content: center; }
+        .photo-tile img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-blue); margin-bottom: 1rem; }
+        
+        ul.clean-list { list-style: none; padding: 0; margin: 0; }
+        ul.clean-list li { margin-bottom: 0.75rem; }
+        ul.clean-list a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        ul.clean-list a:hover { color: var(--secondary-blue); }
+
+        ul.styled-list { list-style: none; padding-left: 0; margin: 0; }
+        ul.styled-list a { color: var(--primary-blue); text-decoration: none; font-weight: 600; transition: color 0.2s ease; }
+        ul.styled-list a:hover { color: var(--secondary-blue); text-decoration: underline; }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.25rem;
+            border: 1px solid #bee3f8;
+            font-weight: 500;
+        }
+
+        .trait-tag { background-color: #E2E8F0; color: var(--accent-grey); border-color: #CBD5E0; }
+        
+        .trait-tag.key-trait {
+            background-color: #63B3ED; 
+            color: #1A365D; 
+            border-color: #4299E1;
+            font-weight: 600;
+            transform: scale(1.02);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .icon {
+            opacity: 0.75;
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 1.1em;
+            vertical-align: text-bottom;
+        }
+
+        .video-wrapper { max-width: 800px; margin: 0 auto; width: 100%; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 1rem; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; }
+
+        .connectable:not(.tag), .standalone-block {
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border-radius: 0 6px 6px 0;
+            border-left: 3px solid var(--secondary-blue);
+            background-color: transparent; 
+            display: block;
+            font-size: 0.88rem; 
+            color: var(--text-dark);
+        }
+
+        .connectable strong, .standalone-block strong { color: var(--primary-blue); }
+        .connectable.tag { transition: all 0.3s ease; }
+        .connectable:hover, .standalone-block:hover { cursor: pointer; }
+
+        .connectable.is-muted { opacity: 0.35; transform: scale(0.99); }
+
+        .connectable:not(.tag).is-highlighted, .connectable:not(.tag):hover, .standalone-block:hover {
+            background-color: var(--light-blue);
+            border-left-color: var(--primary-blue);
+            transform: translateX(4px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            color: var(--text-dark);
+        }
+
+        .connectable.tag.is-highlighted, .connectable.tag:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--text-grey);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .journey-item {
+            margin-bottom: 1.25rem;
+            padding-left: 1rem;
+            border-left: 2px solid #E2E8F0;
+            position: relative;
+        }
+        
+        .journey-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--secondary-blue);
+        }
+        
+        .journey-item ul {
+            margin-top: 0.25rem;
+            margin-bottom: 0;
+            padding-left: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+        
+        .journey-item ul li { margin-bottom: 0.25rem; }
+
+        .intro-text {
+            font-size: 0.88rem; 
+            color: var(--text-grey); 
+            margin-top: 0; 
+            margin-bottom: 1rem; 
+            font-style: italic;
+        }
+
+        /* Neater, smaller links for personal projects */
+        .project-links {
+            margin-top: 0.35rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .project-links a {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            background-color: var(--bg-grey);
+            border: 1px solid #CBD5E0;
+            border-radius: 4px;
+            color: var(--accent-grey) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            transition: all 0.2s ease;
+        }
+        .project-links a:hover {
+            background-color: var(--light-blue);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue) !important;
+        }
+
+        /* Highlight List Specific Styling */
+        .highlight-item {
+            font-size: 0.92rem !important; 
+            color: #1A365D !important;
+            margin-bottom: 8px !important;
+        }
+        .highlight-item strong {
+            color: var(--primary-blue) !important;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Balázs Hidasi, CFA, FRM</h1>
+        <p class="subtitle">Bridging traditional banking risk management with data-driven strategy and AI adoption.</p>
+    </header>
+
+    <div class="grid-container">
+        
+        <div class="grid-section" style="display: contents;">
+            <div class="tile photo-tile desk-span-1">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQFPT5IeWvsQmw/profile-displayphoto-crop_800_800/B4EZ348qW0JEAM-/0/1777998146010?e=1780531200&v=beta&t=ulOKh_YGjikMBHDEYKKxcQoZ-Zh0RVZY0jEEJax40VQ" alt="Balázs Hidasi">
+                <h3 style="margin: 0; color: var(--primary-blue); font-family: 'Playfair Display', serif; font-size: 1.5rem;">Balázs Hidasi</h3>
+                <p style="color: var(--text-grey); font-size: 0.88rem; margin-top: 0.25rem;">Amsterdam, Netherlands</p>
+            </div>
+
+            <div class="tile desk-span-1">
+                <h2>Contact</h2>
+                <ul class="clean-list" style="font-size: 0.88rem;">
+                    <li><span class="icon">📧</span> <a href="mailto:balazs.hidasi@gmail.com">balazs.hidasi@gmail.com</a></li>
+                    <li><span class="icon">📞</span> +31 634 194 907</li>
+                    <li><span class="icon">🔗</span> <a href="https://www.linkedin.com/in/balazshidasi/">LinkedIn Profile</a></li>
+                    <li><span class="icon">💻</span> <a href="https://github.com/BalazsHi/AI-Projects/">GitHub</a></li>
+                    <li><span class="icon">🤗</span> <a href="https://huggingface.co/BalazsH">Hugging Face</a></li>
+                    <li><span class="icon">🌍</span> Origin: Hungary (EU Citizen)</li>
+                </ul>
+            </div>
+
+            <div class="tile desk-span-1">
+                <h2>Milestones <span class="reg-amp">&</span> Accolades</h2>
+                <ul class="styled-list">
+                    <li class="connectable" data-tags="ai"><span class="icon">🎓</span> MSc in AI (In Progress)</li>
+                    <li class="connectable" data-tags="finance"><span class="icon">🏆</span> CFA Charterholder</li>
+                    <li class="connectable" data-tags="risk"><span class="icon">📊</span> Financial Risk Manager</li>
+                    <li class="connectable" data-tags="econ"><span class="icon">🌟</span> Governor's Award</li>
+                    <li class="connectable" data-tags="risk lead"><span class="icon">📈</span> 10+ years optimizing bank risk-returns.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-separator"><span>Value <span class="reg-amp">&</span> Direction</span></div>
+
+        <div class="grid-section" style="display: contents;">
+            <div class="tile span-2 desk-span-2">
+                <h2>Strategic Impact</h2>
+                <p class="intro-text">A deeper look into strategic value delivered across banking functions.</p>
+                <ul class="styled-list">
+                    <li class="standalone-block"><strong>Risk-Reward Optimization:</strong> Maintained an optimal risk-reward profile across portfolios, aligning risk appetite with key business strategy to secure profitability and guard the bank against excessive risks.</li>
+                    <li class="standalone-block"><strong>Thought Leadership:</strong> Drove innovation and risk practices through strategic insights, executive advisory, and transferring knowledge across teams— strengthening team expertise and the bank's risk culture.</li>
+                    <li class="standalone-block"><strong>Cross-Functional Alignment:</strong> Led workstreams bridging Business, Finance, Risk, and Data to improve governance and workflows, driving departmental alignment and operational efficiency.</li>
+                    <li class="standalone-block"><strong>Macro Impact:</strong> Managed the Funding for Growth Scheme (FGS), a major monetary policy tool that had a substantial, real-world impact on aiding the SME sector's recovery following the Global Financial Crisis.</li>
+                </ul>
+            </div>
+
+            <div class="tile desk-span-1">
+                <h2>Where My Focus Lies</h2>
+                <ul class="styled-list">
+                    <li class="standalone-block">
+                        <span class="icon">🏢</span> <strong>Strategic AI Adaptation:</strong> Exploring new organizational structures and workflows to evolve banking for the AI era.
+                    </li>
+                    <li class="standalone-block">
+                        <span class="icon">⚙️</span> <strong>Hands-on Prototyping:</strong> Building ML/LLMs and practical AI applications with an "economics of AI" lens to drive high-ROI automation.
+                    </li>
+                    <li class="standalone-block">
+                        <span class="icon">🛡️</span> <strong>Responsible AI:</strong> Ensuring output verifiability, security, and strict alignment with the EU AI Act.
+                    </li>
+                    <li class="standalone-block">
+                        <span class="icon">🚀</span> <strong>Startup <span class="reg-amp">&</span> FinTech Ecosystem:</strong> Leveraging AI to build fintech products and refine startup ideas.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-separator"><span>Professional Background</span></div>
+
+        <div class="grid-section" style="display: contents;">
+            
+            <div class="tile span-2 desk-span-1">
+                <h2>Highlights <span class="reg-amp">&</span> Projects</h2>
+                <h3 class="timeline-date" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">Highlights</h3>
+                <ul class="styled-list">
+                    <li class="connectable highlight-item" data-tags="ai lead data"><strong>Shaped AI adoption</strong> at Lloyds and built AI agent prototypes (compliance, data quality, code review) using Databricks and LLMs.</li>
+                    <li class="connectable highlight-item" data-tags="risk"><strong>Drove strategic risk forecasting</strong> at ABN AMRO, presenting data-driven insights to senior management committees.</li>
+                    <li class="connectable highlight-item" data-tags="risk data"><strong>Led credit risk management</strong> activities, including enterprise-wide stress testing and risk appetite limit-setting, during initial tenure at Lloyds.</li>
+                    <li class="connectable highlight-item" data-tags="risk strategy"><strong>Directed strategic risk</strong> and macro monitoring, early risk detection, and executive reporting at Erste Group.</li>
+                    <li class="connectable highlight-item" data-tags="econ lead"><strong>Managed the Funding for Growth Scheme</strong> (FGS) monetary policy tool at the Central Bank of Hungary to drive SME sector recovery.</li>
+                </ul>
+
+                <h3 class="timeline-date" style="margin-top: 1.75rem; margin-bottom: 0.75rem;">Active Projects</h3>
+                <ul class="styled-list">
+                    <li class="connectable" data-tags="ai lead strategy">
+                        <strong>AI Strategy:</strong> Published writing on AI risks/rewards and AI adaptation strategies in banking.
+                        <div class="project-links">
+                            <a href="https://github.com/BalazsHi/AI-Projects/blob/main/BANKING%20use%20cases/IDEAS/AI_considerations_for_Banks.pdf">AI risks and rewards</a> 
+                            <a href="https://github.com/BalazsHi/AI-Projects/blob/main/BANKING%20use%20cases/AI%20Adaptation%20in%20Banking.pdf">AI Adaptation in Banking essay</a> 
+                            <a href="https://github.com/BalazsHi/AI-Projects/blob/main/BANKING%20use%20cases/IDEAS/AI_strategy_considerations_for_Banks.pdf">AI Strategy considerations</a>
+                        </div>
+                    </li>
+                    <li class="connectable" data-tags="ai data">
+                        <strong>LLM <span class="reg-amp">&</span> Agent Applications:</strong>
+                        <div class="project-links">
+                            <a href="https://github.com/BalazsHi/AI-Projects/tree/main/BANKING%20use%20cases">AI agent prototypes for Bank use cases</a> 
+                            <a href="https://github.com/BalazsHi/AI-Projects/blob/main/TRADING%20use%20cases/LLM%20Fine-tune%20projects/LLM_finetuning_experimentation_for_trading.pdf">Fine-tune open source LLM for trading</a> 
+                            <a href="https://github.com/BalazsHi/AI-Projects/">GitHub</a>
+                            <a href="https://huggingface.co/BalazsH">Hugging Face</a>
+                        </div>
+                    </li>
+                    <li class="connectable" data-tags="ai data">
+                        <strong>Trading ML <span class="reg-amp">&</span> Deep Learning Models:</strong> Developed back-tested models using Transformers, LSTMs, and Reinforcement Learning in PyTorch.
+                        <div class="project-links">
+                            <a href="https://github.com/BalazsHi/AI-Projects/blob/main/TRADING%20use%20cases/EXPERIMENTATION%20-%20model_FX_LSTM_v01/Model_Documentation_FX_LSTM_v01%20-%20Doc_v01.pdf">LSTM</a> 
+                            <a href="https://github.com/BalazsHi/AI-Projects/blob/main/TRADING%20use%20cases/EXPERIMENTATION%20-%20model_FX_RL_PPO_v01/Model_Documentation_FX_RL_PPO_v01%20-%20Doc_v01.pdf">Reinforcement Learning</a> 
+                            <a href="https://github.com/BalazsHi/AI-Projects/blob/main/TRADING%20use%20cases/EXPERIMENTATION%20-%20model_FX_TRANSFORMERS_v01/Model_Documentation_FX_Transformers_v01%20-%20Doc_v01.pdf">Transformers</a>
+                        </div>
+                    </li>
+                    <li class="connectable" data-tags="ai econ">
+                        <strong>MSc AI Coursework:</strong>
+                        <div class="project-links">
+                            <a href="https://mahara.bath.ac.uk/view/view.php?t=22efad55545ce387a2a7">Selected Coursework Samples</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tile span-2 desk-span-2" style="grid-row: span 2;">
+                <h2>My Journey</h2>
+                
+                <div class="connectable" data-tags="risk lead ai" style="margin-bottom: 1.5rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 1rem;">
+                    <span class="timeline-date">10+ Years Experience</span>
+                    <strong style="font-size: 1.05rem;">Senior Risk <span class="reg-amp">&</span> Analytics Professional</strong>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0;">Extensive experience leveraging risk data, analytics, and regulatory frameworks across major financial institutions. Proven track record of driving cross-functional alignment to set risk appetite limits, optimize risk management strategies, and align risk with business objectives to maintain an optimal risk-reward profile; regularly advising senior executives to drive high-stakes, strategic decisions.</p>
+                </div>
+
+                <div style="margin-left: 1.25rem;">
+                    <div class="journey-item connectable" data-tags="ai lead risk">
+                        <span class="timeline-date">Feb 2025 - Apr 2025 | Amsterdam</span>
+                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Risk Modeller — Model Dev. <span class="reg-amp">&</span> Monitoring</strong><br>
+                        <span style="font-size: 0.85rem; font-weight: 600;">Lloyds Banking Group</span>
+                        <ul>
+                            <li>Internal AI consultant — identified inefficiencies, shaped AI adoption strategy.</li>
+                            <li>Built LLM pilots in Databricks: code reviewer, data quality agent, compliance checker.</li>
+                            <li>Led ECB-aligned governance workstream; presented to senior executives.</li>
+                            <li>Managed and led cross-functional initiatives to enhance IRB capital model lifecycle governance, driving process and way of working improvements.</li>
+                        </ul>
+                    </div>
+
+                    <div class="journey-item connectable" data-tags="ai data">
+                        <span class="timeline-date">Oct 2024 – Jan 2025 | Bangkok, Thailand</span>
+                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Independent Development — AI <span class="reg-amp">&</span> FinTech</strong>
+                        <ul>
+                            <li>Developed LLM & AI agent prototypes for banking: policy creation, compliance.</li>
+                            <li>Built & back-tested trading ML models using PyTorch (Transformers, LSTMs, RL).</li>
+                        </ul>
+                    </div>
+
+                    <div class="journey-item connectable" data-tags="risk data lead">
+                        <span class="timeline-date">Oct 2023 – Sep 2024 | Amsterdam</span>
+                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Portfolio Manager — Performance <span class="reg-amp">&</span> Analytics</strong><br>
+                        <span style="font-size: 0.85rem; font-weight: 600;">ABN AMRO Bank | Credit Portfolio Management</span>
+                        <ul>
+                            <li>Led Risk Forecasting domain — data-driven insights across Corporate Banking portfolios.</li>
+                            <li>Presented forecasting results & performance findings to senior management committees.</li>
+                            <li>Navigated organisational complexity — aligned Business & Risk on portfolio risk topics.</li>
+                        </ul>
+                    </div>
+
+                    <div class="journey-item connectable" data-tags="risk data">
+                        <span class="timeline-date">Oct 2019 – Sep 2023 | Amsterdam</span>
+                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Risk Analyst — Risk Mgt. <span class="reg-amp">&</span> Controlling</strong><br>
+                        <span style="font-size: 0.85rem; font-weight: 600;">Lloyds Banking Group</span>
+                        <ul>
+                            <li>Led cross-functional stakeholder management to establish enterprise-wide risk appetite limits, stress testing, and risk forecasting (IFRS9, IRB).</li>
+                            <li>Conducted quantitative deep-dives into risk-reward dynamics and designed dynamic Power BI dashboards for early risk detection.</li>
+                            <li>Collaborated with Regulators — reviewed risk practices, data quality, and model performance.</li>
+                        </ul>
+                    </div>
+
+                    <div class="journey-item connectable" data-tags="risk strategy">
+                        <span class="timeline-date">Jan 2017 – Oct 2019 | Budapest</span>
+                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Portfolio Analyst — Strategic Risk Management</strong><br>
+                        <span style="font-size: 0.85rem; font-weight: 600;">Erste Group Bank</span>
+                        <ul>
+                            <li>Led strategic risk management and quantitative analyses, focusing on risk-based pricing and aligning IFRS9 provisioning with risk planning.</li>
+                            <li>Coordinated enterprise-wide risk report creation, presenting actionable portfolio risk insights to senior executives to support strategic planning, capital adequacy, and credit quality decisions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="journey-item connectable" data-tags="econ">
+                    <span class="timeline-date">Apr 2013 - Jan 2017 | Budapest</span>
+                    <strong style="font-size: 0.95rem; color: var(--primary-blue);">Analyst — Financial System Analysis</strong><br>
+                    <span style="font-size: 0.85rem; font-weight: 600;">Central Bank of Hungary</span>
+                    <ul>
+                        <li>Managed SME lending monetary policy tools, conducted statistical analyses, and published policy studies.</li>
+                    </ul>
+                </div>
+
+                <div class="journey-item connectable" data-tags="econ" style="margin-bottom: 0;">
+                    <span class="timeline-date">May 2011 - Mar 2013 | Budapest</span>
+                    <strong style="font-size: 0.95rem; color: var(--primary-blue);">Financial Policy Analyst</strong><br>
+                    <span style="font-size: 0.85rem; font-weight: 600;">Ministry for National Economy</span>
+                    <ul>
+                        <li>Monitored macroeconomic and financial market trends, providing policy analysis.</li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <div class="tile span-2 desk-span-1">
+                <h2>Core Expertise</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.5rem;">
+                    <span class="connectable tag" data-tags="risk">Credit Risk <span class="reg-amp">&</span> IRB Models</span>
+                    <span class="connectable tag" data-tags="data">Quantitative Analytics</span>
+                    <span class="connectable tag" data-tags="risk">Regulatory Frameworks</span>
+                    <span class="connectable tag" data-tags="ai">LLM <span class="reg-amp">&</span> AI Agents</span>
+                    <span class="connectable tag" data-tags="ai">ML <span class="reg-amp">&</span> Deep Learning</span>
+                    <span class="connectable tag" data-tags="ai">AI Governance</span>
+                    <span class="connectable tag" data-tags="ai lead">AI Adaptation at Banks</span>
+                    <span class="connectable tag" data-tags="finance">Fintech <span class="reg-amp">&</span> Startups</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-separator"><span>Capabilities</span></div>
+
+        <div class="grid-section" style="display: contents;">
+            
+            <div class="tile desk-span-1">
+                <h2>People <span class="reg-amp">&</span> Influence</h2>
+                <p class="intro-text">Core competencies driving cross-functional success.</p>
+                <ul class="styled-list" style="display: flex; flex-direction: column; gap: 6px;">
+                    <li class="connectable" style="padding: 10px 12px;" data-tags="lead"><span class="icon">🗣️</span> <strong>Executive Storytelling:</strong> Translating technical complexity for board-level, non-technical audiences.</li>
+                    <li class="connectable" style="padding: 10px 12px;" data-tags="lead finance"><span class="icon">🤝</span> <strong>Cross-Functional Alignment:</strong> Seamlessly bridging Business, Finance, Risk, and Data teams collaboratively.</li>
+                    <li class="connectable" style="padding: 10px 12px;" data-tags="strategy lead"><span class="icon">🧩</span> <strong>Strategic Advisory:</strong> Data-driven problem framing, governance design, and consulting mindset for ambiguous challenges.</li>
+                    <li class="connectable" style="padding: 10px 12px;" data-tags="strategy"><span class="icon">🔄</span> <strong>Adaptability:</strong> Rapidly pivoting between traditional risk frameworks and emerging AI paradigms.</li>
+                </ul>
+            </div>
+
+            <div class="tile desk-span-1" style="display: flex; flex-direction: column;">
+                <h2>Technical Toolkit</h2>
+                <div style="position: relative; height: 160px; width: 100%; margin-bottom: 1rem;">
+                    <canvas id="techSkillsChart"></canvas>
+                </div>
+                
+                <div style="flex-grow: 1;">
+                    <p class="connectable" data-tags="risk" style="margin-top: 0; margin-bottom: 0.5rem;"><strong>Risk Management:</strong> Credit Risk Management, Risk Models, Risk Frameworks, ECB <span class="reg-amp">&</span> Regulatory expectations.</p>
+                    <p class="connectable" data-tags="ai" style="margin-bottom: 0.5rem;"><strong>GenAI Tools:</strong> LLMs, AI agents, RAG, fine-tuning, Prompt Engineering, Microsoft Copilot, GitHub Copilot.</p>
+                    <p class="connectable" data-tags="ai" style="margin-bottom: 0.5rem;"><strong>Machine Learning:</strong> ML Models, Architectures, Deep Learning, PyTorch, TensorFlow.</p>
+                    <p class="connectable" data-tags="data" style="margin-bottom: 0;"><strong>Data <span class="reg-amp">&</span> Platforms:</strong> Python, SQL, Power BI, Databricks, GitHub, Hugging Face.</p>
+                </div>
+            </div>
+
+            <div class="tile desk-span-1">
+                <h2>Academic Foundation</h2>
+                <ul class="styled-list">
+                    <li class="connectable" data-tags="ai">
+                        <strong>MSc in Artificial Intelligence</strong><br>
+                        <span class="timeline-date" style="margin-top: 2px;">Univ. of Bath (Jan 2025 – Present)</span>
+                    </li>
+                    <li class="connectable" data-tags="econ">
+                        <strong>MSc in Public Policy <span class="reg-amp">&</span> Mgt. — Economist</strong><br>
+                        <span class="timeline-date" style="margin-top: 2px;">Corvinus Univ. of Budapest (2012)</span>
+                    </li>
+                    <li class="connectable" data-tags="econ">
+                        <strong>BSc in Finance — Economist</strong><br>
+                        <span class="timeline-date" style="margin-top: 2px;">Budapest Business School (2009)</span>
+                    </li>
+                </ul>
+
+                <h3 style="font-size: 1.1rem; color: var(--primary-blue); margin-top: 1rem; margin-bottom: 0.75rem; font-family: 'Playfair Display', serif;">Professional Certifications</h3>
+                <ul class="styled-list">
+                    <li class="connectable" data-tags="finance"><strong>CFA Charterholder</strong> <span style="color: var(--text-grey); font-size: 0.8rem;">(CFAI)</span></li>
+                    <li class="connectable" data-tags="risk"><strong>Financial Risk Manager</strong> <span style="color: var(--text-grey); font-size: 0.8rem;">(GARP)</span></li>
+                </ul>
+                
+                <h3 style="font-size: 1.1rem; color: var(--primary-blue); margin-top: 1rem; margin-bottom: 0.75rem; font-family: 'Playfair Display', serif;">Targeted Training</h3>
+                <ul class="styled-list">
+                    <li class="connectable" data-tags="ai"><strong>Databricks:</strong> GenAI <span class="reg-amp">&</span> Adv. MLOps (2026)</li>
+                    <li class="connectable" data-tags="risk data"><strong>Python:</strong> Credit Risk Modeling (2020)</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="section-separator"><span>Personal Profile</span></div>
+
+        <div class="grid-section" style="display: contents;">
+            
+            <div class="tile desk-span-1">
+                <h2>Off the Clock</h2>
+                <p class="intro-text">Beyond banking, I stay energized through:</p>
+                <ul class="styled-list">
+                    <li class="connectable"><span class="icon">🏋️‍♂️</span> <strong>Fitness:</strong> Gym, kickboxing, and healthy diet.</li>
+                    <li class="connectable"><span class="icon">💡</span> <strong>Entrepreneurship:</strong> Startup and business ideation.</li>
+                    <li class="connectable"><span class="icon">🌍</span> <strong>Exploration:</strong> Global travel and culture.</li>
+                    <li class="connectable"><span class="icon">🤝</span> <strong>Community:</strong> Quality time with friends.</li>
+                    <li class="connectable"><span class="icon">🧠</span> <strong>Interests:</strong> Psychology, AI trends, podcasts.</li>
+                </ul>
+            </div>
+
+            <div class="tile desk-span-1">
+                <h2>Who I Am</h2>
+                <div style="margin-top: 0.5rem; line-height: 2.4;">
+                    <span class="tag trait-tag key-trait">Curiosity</span>
+                    <span class="tag trait-tag key-trait">Continuous Learning</span>
+                    <span class="tag trait-tag key-trait">Builder Mindset</span>
+                    <span class="tag trait-tag key-trait">Perseverance</span>
+                    <span class="tag trait-tag">Judgement</span>
+                    <span class="tag trait-tag">Integrity</span>
+                    <span class="tag trait-tag">Resilience</span>
+                    <span class="tag trait-tag">Creativity</span>
+                    <span class="tag trait-tag">Analytical Thinking</span>
+                    <span class="tag trait-tag">Results Orientation</span>
+                    <span class="tag trait-tag">Entrepreneurship</span>
+                    <span class="tag trait-tag">Empathy</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // 1. Strictly Scoped Cross-Tile Hover Logic
+        const connectables = document.querySelectorAll('.connectable');
+        
+        connectables.forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                const tagsAttribute = this.getAttribute('data-tags');
+                if (!tagsAttribute) return;
+                
+                const hoverTags = tagsAttribute.split(' ');
+                
+                // Scope highlights strictly to the current section
+                const parentSection = this.closest('.grid-section');
+                if (!parentSection) return;
+
+                parentSection.querySelectorAll('.connectable').forEach(item => {
+                    const itemTagsAttribute = item.getAttribute('data-tags');
+                    if (itemTagsAttribute) {
+                        const itemTags = itemTagsAttribute.split(' ');
+                        const hasMatch = hoverTags.some(tag => itemTags.includes(tag));
+                        if (hasMatch) {
+                            item.classList.add('is-highlighted');
+                        } else {
+                            item.classList.add('is-muted');
+                        }
+                    } else {
+                        item.classList.add('is-muted');
+                    }
+                });
+            });
+
+            el.addEventListener('mouseleave', function() {
+                const parentSection = this.closest('.grid-section');
+                if (!parentSection) return;
+                
+                parentSection.querySelectorAll('.connectable').forEach(item => {
+                    item.classList.remove('is-highlighted');
+                    item.classList.remove('is-muted');
+                });
+            });
+        });
+
+        // 2. Technical Skills Grouped Bar Chart
+        const ctxTech = document.getElementById('techSkillsChart').getContext('2d');
+        const techSkillsChart = new Chart(ctxTech, {
+            type: 'bar',
+            data: {
+                labels: ['Risk Management', 'Data & Platforms', 'Machine Learning', 'GenAI Tools'],
+                datasets: [{
+                    label: 'Avg. Years Experience',
+                    data: [10, 4, 3, 2.5],
+                    backgroundColor: [
+                        'rgba(43, 108, 176, 0.9)', 
+                        'rgba(66, 153, 225, 0.8)',
+                        'rgba(66, 153, 225, 0.7)',
+                        'rgba(99, 179, 237, 0.6)'
+                    ],
+                    borderColor: 'rgba(43, 108, 176, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    hoverBackgroundColor: 'rgba(43, 108, 176, 1)', 
+                }]
+            },
+            options: {
+                indexAxis: 'y', 
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 10,
+                        title: { display: true, text: 'Years', color: '#718096', font: {size: 10} },
+                        grid: { color: 'rgba(0, 0, 0, 0.05)' },
+                        ticks: { font: {size: 10} }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: '#2D3748', font: { weight: '500', size: 10 } }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let val = context.parsed.x;
+                                return `${val} ${val >= 10 ? '+ Yrs' : 'Yrs'}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
