@@ -116,12 +116,38 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
+            position: relative; 
         }
 
         .tile:hover {
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
             border-top-color: var(--secondary-blue);
         }
+
+        /* --- Featured Tile Styling (Inside Grey Frame + Elevated Shadow) --- */
+        .featured-tile {
+            border-top: 4px solid var(--primary-blue); 
+            box-shadow: 0 8px 24px rgba(43, 108, 176, 0.08); 
+            background: linear-gradient(to bottom right, #FFFFFF, #F8FAFC); 
+        }
+
+        .featured-tile::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            left: 6px;
+            right: 6px;
+            border: 1px solid #CBD5E0; 
+            border-radius: 8px;
+            pointer-events: none; 
+            z-index: 1;
+        }
+
+        .featured-tile:hover {
+            box-shadow: 0 12px 32px rgba(43, 108, 176, 0.12);
+        }
+        /* ----------------------------------------------------------------------------- */
 
         .tile h2 {
             font-family: 'Playfair Display', serif;
@@ -132,17 +158,19 @@
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid #E2E8F0; 
+            position: relative;
+            z-index: 2; 
         }
 
         .photo-tile { text-align: center; align-items: center; justify-content: center; }
-        .photo-tile img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-blue); margin-bottom: 1rem; }
+        .photo-tile img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: none; margin-bottom: 1rem; }
         
-        ul.clean-list { list-style: none; padding: 0; margin: 0; }
+        ul.clean-list { list-style: none; padding: 0; margin: 0; position: relative; z-index: 2; }
         ul.clean-list li { margin-bottom: 0.75rem; }
         ul.clean-list a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
         ul.clean-list a:hover { color: var(--secondary-blue); }
 
-        ul.styled-list { list-style: none; padding-left: 0; margin: 0; }
+        ul.styled-list { list-style: none; padding-left: 0; margin: 0; position: relative; z-index: 2; }
         ul.styled-list a { color: var(--primary-blue); text-decoration: none; font-weight: 600; transition: color 0.2s ease; }
         ul.styled-list a:hover { color: var(--secondary-blue); text-decoration: underline; }
 
@@ -176,6 +204,26 @@
             font-size: 1.1em;
             vertical-align: text-bottom;
         }
+
+        /* --- Company Icons Styling --- */
+        .company-icon {
+            vertical-align: middle;
+            margin-top: -3px;
+            margin-right: 8px;
+            border-radius: 2px;
+            object-fit: contain;
+        }
+        
+        .icon-standard {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .icon-large {
+            width: 24px;
+            height: 24px;
+        }
+        /* -------------------------------------- */
 
         .video-wrapper { max-width: 800px; margin: 0 auto; width: 100%; }
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 1rem; }
@@ -258,6 +306,8 @@
             margin-top: 0; 
             margin-bottom: 1rem; 
             font-style: italic;
+            position: relative;
+            z-index: 2; 
         }
 
         /* Neater, smaller links for personal projects */
@@ -307,7 +357,7 @@
         
         <div class="grid-section" style="display: contents;">
             <div class="tile photo-tile desk-span-1">
-                <img src="https://media.licdn.com/dms/image/v2/D4E03AQFPT5IeWvsQmw/profile-displayphoto-crop_800_800/B4EZ348qW0JEAM-/0/1777998146010?e=1780531200&v=beta&t=ulOKh_YGjikMBHDEYKKxcQoZ-Zh0RVZY0jEEJax40VQ" alt="Balázs Hidasi">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQGvFFnGtvaICg/profile-displayphoto-scale_400_400/B4EZ5AOySKH8Ag-/0/1779194079184?e=1780531200&v=beta&t=kmqwHoYckwRe1sXPXJWOFNvXF1vVJRma-JkbFgyqv7w" alt="Balázs Hidasi">
                 <h3 style="margin: 0; color: var(--primary-blue); font-family: 'Playfair Display', serif; font-size: 1.5rem;">Balázs Hidasi</h3>
                 <p style="color: var(--text-grey); font-size: 0.88rem; margin-top: 0.25rem;">Amsterdam, Netherlands</p>
             </div>
@@ -339,7 +389,7 @@
         <div class="section-separator"><span>Value <span class="reg-amp">&</span> Direction</span></div>
 
         <div class="grid-section" style="display: contents;">
-            <div class="tile span-2 desk-span-2">
+            <div class="tile span-2 desk-span-2 featured-tile">
                 <h2>Strategic Impact</h2>
                 <p class="intro-text">A deeper look into strategic value delivered across banking functions.</p>
                 <ul class="styled-list">
@@ -373,9 +423,9 @@
 
         <div class="grid-section" style="display: contents;">
             
-            <div class="tile span-2 desk-span-1">
+            <div class="tile span-2 desk-span-1 featured-tile">
                 <h2>Highlights <span class="reg-amp">&</span> Projects</h2>
-                <h3 class="timeline-date" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">Highlights</h3>
+                <h3 class="timeline-date" style="margin-top: 0.5rem; margin-bottom: 0.75rem; position: relative; z-index: 2;">Highlights</h3>
                 <ul class="styled-list">
                     <li class="connectable highlight-item" data-tags="ai lead data"><strong>Shaped AI adoption</strong> at Lloyds and built AI agent prototypes (compliance, data quality, code review) using Databricks and LLMs.</li>
                     <li class="connectable highlight-item" data-tags="risk"><strong>Drove strategic risk forecasting</strong> at ABN AMRO, presenting data-driven insights to senior management committees.</li>
@@ -384,7 +434,7 @@
                     <li class="connectable highlight-item" data-tags="econ lead"><strong>Managed the Funding for Growth Scheme</strong> (FGS) monetary policy tool at the Central Bank of Hungary to drive SME sector recovery.</li>
                 </ul>
 
-                <h3 class="timeline-date" style="margin-top: 1.75rem; margin-bottom: 0.75rem;">Active Projects</h3>
+                <h3 class="timeline-date" style="margin-top: 1.75rem; margin-bottom: 0.75rem; position: relative; z-index: 2;">Active Projects</h3>
                 <ul class="styled-list">
                     <li class="connectable" data-tags="ai lead strategy">
                         <strong>AI Strategy:</strong> Published writing on AI risks/rewards and AI adaptation strategies in banking.
@@ -432,8 +482,8 @@
                 <div style="margin-left: 1.25rem;">
                     <div class="journey-item connectable" data-tags="ai lead risk">
                         <span class="timeline-date">Feb 2025 - Apr 2025 | Amsterdam</span>
-                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Risk Modeller — Model Dev. <span class="reg-amp">&</span> Monitoring</strong><br>
-                        <span style="font-size: 0.85rem; font-weight: 600;">Lloyds Banking Group</span>
+                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Risk Modeller — Model Development <span class="reg-amp">&</span> Monitoring</strong><br>
+                        <span style="font-size: 0.85rem; font-weight: 600;"><img src="Lloyds_logo.png" alt="Lloyds Logo" class="company-icon icon-large" onerror="this.style.display='none'">Lloyds Banking Group</span>
                         <ul>
                             <li>Internal AI consultant — identified inefficiencies, shaped AI adoption strategy.</li>
                             <li>Built LLM pilots in Databricks: code reviewer, data quality agent, compliance checker.</li>
@@ -453,8 +503,8 @@
 
                     <div class="journey-item connectable" data-tags="risk data lead">
                         <span class="timeline-date">Oct 2023 – Sep 2024 | Amsterdam</span>
-                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Portfolio Manager — Performance <span class="reg-amp">&</span> Analytics</strong><br>
-                        <span style="font-size: 0.85rem; font-weight: 600;">ABN AMRO Bank | Credit Portfolio Management</span>
+                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Portfolio Manager — Performance Management <span class="reg-amp">&</span> Analytics</strong><br>
+                        <span style="font-size: 0.85rem; font-weight: 600;"><img src="ABN_AMRO.png" alt="ABN AMRO Logo" class="company-icon icon-standard" onerror="this.style.display='none'">ABN AMRO Bank</span>
                         <ul>
                             <li>Led Risk Forecasting domain — data-driven insights across Corporate Banking portfolios.</li>
                             <li>Presented forecasting results & performance findings to senior management committees.</li>
@@ -464,8 +514,8 @@
 
                     <div class="journey-item connectable" data-tags="risk data">
                         <span class="timeline-date">Oct 2019 – Sep 2023 | Amsterdam</span>
-                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Risk Analyst — Risk Mgt. <span class="reg-amp">&</span> Controlling</strong><br>
-                        <span style="font-size: 0.85rem; font-weight: 600;">Lloyds Banking Group</span>
+                        <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Credit Risk Analyst — Risk Management <span class="reg-amp">&</span> Controlling</strong><br>
+                        <span style="font-size: 0.85rem; font-weight: 600;"><img src="Lloyds_logo.png" alt="Lloyds Logo" class="company-icon icon-large" onerror="this.style.display='none'">Lloyds Banking Group</span>
                         <ul>
                             <li>Led cross-functional stakeholder management to establish enterprise-wide risk appetite limits, stress testing, and risk forecasting (IFRS9, IRB).</li>
                             <li>Conducted quantitative deep-dives into risk-reward dynamics and designed dynamic Power BI dashboards for early risk detection.</li>
@@ -476,7 +526,7 @@
                     <div class="journey-item connectable" data-tags="risk strategy">
                         <span class="timeline-date">Jan 2017 – Oct 2019 | Budapest</span>
                         <strong style="font-size: 0.95rem; color: var(--primary-blue);">Senior Portfolio Analyst — Strategic Risk Management</strong><br>
-                        <span style="font-size: 0.85rem; font-weight: 600;">Erste Group Bank</span>
+                        <span style="font-size: 0.85rem; font-weight: 600;"><img src="Erste_Group.png" alt="Erste Group Logo" class="company-icon icon-large" onerror="this.style.display='none'">Erste Group Bank</span>
                         <ul>
                             <li>Led strategic risk management and quantitative analyses, focusing on risk-based pricing and aligning IFRS9 provisioning with risk planning.</li>
                             <li>Coordinated enterprise-wide risk report creation, presenting actionable portfolio risk insights to senior executives to support strategic planning, capital adequacy, and credit quality decisions.</li>
