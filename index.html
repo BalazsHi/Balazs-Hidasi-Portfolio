@@ -164,6 +164,63 @@
         .featured-tile:hover {
             box-shadow: 0 12px 32px rgba(43, 108, 176, 0.12);
         }
+        
+        /* --- Hero Tile Styling for "My Edge" --- */
+        .hero-tile {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #FFFFFF 0%, #D9E7F4 100%);
+            border-top: 4px solid #ED8936;
+            box-shadow: 0 10px 30px rgba(43, 108, 176, 0.12);
+            padding: 2.5rem;
+        }
+
+        .hero-tile:hover {
+            box-shadow: 0 15px 35px rgba(43, 108, 176, 0.18);
+            border-top-color: #DD6B20;
+        }
+
+        .hero-tile h2 {
+            color: #DD6B20;
+            border-bottom: 2px solid rgba(237, 137, 54, 0.2);
+            font-size: 3.0rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tile .intro-text {
+            font-size: 1.05rem; 
+            color: var(--text-dark);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            font-style: normal;
+        }
+
+        .hero-tile .styled-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-tile .styled-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .hero-edge-statement {
+            margin-top: 2rem;
+            padding: 1.15rem;
+            background-color: white;
+            border-left: 5px solid var(--primary-blue);
+            border-radius: 8px;
+            font-size: 1.0rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            color: var(--text-dark);
+        }
+
+        .hero-edge-statement strong {
+            color: var(--primary-blue);
+            font-size: 1.0rem;
+        }
         /* ----------------------------------------------------------------------------- */
 
         .tile h2 {
@@ -444,6 +501,24 @@
             </div>
         </div>
 
+        <!-- NEW HERO SECTION ADDED HERE -->
+        <div class="grid-section" style="display: contents;">
+            <div class="tile hero-tile">
+                <h2>What I Bring</h2>
+                <p class="intro-text">I bring 10+ years of banking, risk, and analytics experience across major financial institutions and central banking, coupled with a growing focus on AI-enabled transformation and responsible technology adoption in financial services.</p>
+                <ul class="styled-list">
+                    <li class="standalone-block"><strong>Banking & risk context:</strong> Deep experience in credit risk, portfolio analytics, strategic risk management, regulatory frameworks, and macro & monetary policy.</li>
+                    <li class="standalone-block"><strong>Executive decision support:</strong> Translating complex risk, data, and regulatory insights into clear recommendations for senior stakeholders.</li>
+                    <li class="standalone-block"><strong>AI-enabled perspective:</strong> Combining financial-services domain expertise with hands-on exposure to modern AI, machine learning, and automation use cases.</li>
+                    <li class="standalone-block"><strong>Cross-functional bridge:</strong> Connecting business, risk, data science, and technology to turn complex ideas into practical outcomes.</li>
+                </ul>
+                <div class="hero-edge-statement">
+                    <strong>My edge:</strong> Bridging institutional banking knowledge, analytical thinking, and emerging AI capabilities in a way that is practical, business-focused, and grounded in real-world banking complexities.
+                </div>
+            </div>
+        </div>
+        <!-- END NEW HERO SECTION -->
+
         <div class="section-separator"><span>Value <span class="reg-amp">&</span> Direction</span></div>
 
         <div class="grid-section" style="display: contents;">
@@ -451,7 +526,7 @@
                 <h2>Strategic Impact</h2>
                 <p class="intro-text">A deeper look into strategic value delivered across banking functions.</p>
                 <ul class="styled-list" style="display: flex; flex-direction: column; gap: 12px;">
-                    <li class="standalone-block"><strong>Risk-Reward Optimization:</strong> Maintained an optimal risk-reward profile across portfolios, aligning risk appetite with key business strategy to secure profitability and guard the bank against excessive risks.</li>
+                    <li class="standalone-block"><strong>Risk-Reward Optimization:</strong> Maintained an optimal risk-reward profile across credit portfolios, aligning risk appetite with business strategy to secure profitability and guard the bank against excessive risks.</li>
                     <li class="standalone-block"><strong>Thought Leadership:</strong> Drove innovation and risk practices through strategic insights, executive advisory, and transferring knowledge across teams— strengthening team expertise and the bank's risk culture.</li>
                     <li class="standalone-block"><strong>Cross-Functional Alignment:</strong> Led workstreams bridging Business, Finance, Risk, and Data to improve governance and workflows, driving departmental alignment and operational efficiency.</li>
                     <li class="standalone-block"><strong>Macro Impact:</strong> Managed the Funding for Growth Scheme (FGS), a major monetary policy tool that had a substantial, real-world impact on aiding the SME sector's recovery following the Global Financial Crisis.</li>
@@ -491,9 +566,9 @@
                 <h2>Highlights <span class="reg-amp">&</span> Projects</h2>
                 <h3 class="timeline-date" style="margin-top: 0.5rem; margin-bottom: 0.75rem; position: relative; z-index: 2;">Highlights</h3>
                 <ul class="styled-list">
-                    <li class="connectable highlight-item"><strong>Shaped AI adoption</strong> at Lloyds Bank and built AI agent prototypes (compliance, data quality, code review) using Databricks and LLMs.</li>
+                    <li class="connectable highlight-item"><strong>Shaped AI adoption</strong> at Lloyds Bank and built AI agent prototypes (data quality, code review, compliance) using Databricks and LLMs.</li>
                     <li class="connectable highlight-item"><strong>Drove strategic risk forecasting</strong> at ABN AMRO Bank, presenting data-driven insights to senior management committees.</li>
-                    <li class="connectable highlight-item"><strong>Led credit risk management</strong> activities, including enterprise-wide stress testing and risk appetite limit-setting, during initial tenure at Lloyds Bank.</li>
+                    <li class="connectable highlight-item"><strong>Led credit risk management</strong> activities, including risk appetite limit-setting, risk forecasting, and stress testing, during initial tenure at Lloyds Bank.</li>
                     <li class="connectable highlight-item"><strong>Directed strategic risk</strong> and macro monitoring, early risk detection, and executive reporting at Erste Group Bank.</li>
                     <li class="connectable highlight-item"><strong>Managed the Funding for Growth Scheme</strong> (FGS) monetary policy tool at the Central Bank of Hungary to drive SME sector recovery.</li>
                 </ul>
@@ -540,7 +615,7 @@
                 <div class="connectable" style="margin-bottom: 1.5rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 1rem;">
                     <span class="timeline-date">10+ Years Experience</span>
                     <strong style="font-size: 1.05rem;">Senior Risk <span class="reg-amp">&</span> Analytics Professional</strong>
-                    <p style="margin-top: 0.25rem; margin-bottom: 0;">Extensive experience leveraging risk data, analytics, and regulatory frameworks across major financial institutions. Proven track record of driving cross-functional alignment to set risk appetite limits, optimize risk management strategies, and align risk with business objectives to maintain an optimal risk-reward profile; regularly advising senior executives to drive high-stakes, strategic decisions.</p>
+                    <p style="margin-top: 0.25rem; margin-bottom: 0;">Extensive experience leveraging risk data, models, analytics, and regulatory frameworks across major financial institutions. Proven track record of driving cross-functional alignment to set risk appetite limits, optimize risk management strategies, and align risk with business objectives to maintain an optimal risk-reward profile; regularly advising senior executives to drive high-stakes, strategic decisions.</p>
                 </div>
 
                 <div style="margin-left: 1.25rem;">
@@ -550,8 +625,8 @@
                         <span style="font-size: 0.85rem; font-weight: 600;"><img src="data:image/png;base64,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"
  alt="Lloyds Logo" class="company-icon icon-large" onerror="this.style.display='none'">Lloyds Banking Group</span>
                         <ul>
-                            <li>Internal AI consultant — identified inefficiencies, shaped AI adoption strategy.</li>
-                            <li>Built LLM pilots in Databricks: code reviewer, data quality agent, compliance checker.</li>
+                            <li>Acted as internal AI consultant — identified process improvement opportunities, shaped AI adoption.</li>
+                            <li>Built and evaluated LLM pilots in Databricks: code reviewer, data quality agent, compliance checker.</li>
                             <li>Led ECB-aligned governance workstream; presented to senior executives.</li>
                             <li>Managed and led cross-functional initiatives to enhance IRB capital model lifecycle governance, driving process and way of working improvements.</li>
                         </ul>
@@ -605,7 +680,7 @@
                     <strong style="font-size: 0.95rem; color: var(--primary-blue);">Analyst — Financial System Analysis</strong><br>
                     <span style="font-size: 0.85rem; font-weight: 600;">Central Bank of Hungary</span>
                     <ul>
-                        <li>Managed SME lending monetary policy tools, conducted statistical analyses, and published policy studies.</li>
+                        <li>Managed SME lending monetary policy tools, conducted statistical analyses, and published policy <a href="https://www.mnb.hu/letoltes/fgs-the-funding-for-growth-scheme-experience-with-the-magyar-nemzeti-bank-instrument-to-incentivise-bank-lending.pdf" target="_blank" rel="noopener noreferrer">studies</a>.</li>
                     </ul>
                 </div>
 
@@ -623,7 +698,9 @@
             <div class="tile span-2 desk-span-1">
                 <h2>Knowledge Domains</h2>
                 <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.5rem;">
-                    <span class="connectable tag">Credit Risk <span class="reg-amp">&</span> IRB Models</span>
+                    <span class="connectable tag">Credit Risk Management</span>
+                    <span class="connectable tag">IRB Credit Risk Models</span>
+                    <span class="connectable tag">Risk Data</span>
                     <span class="connectable tag">Quantitative Analytics</span>
                     <span class="connectable tag">Regulatory Frameworks</span>
                     <span class="connectable tag">LLM <span class="reg-amp">&</span> AI Agents</span>
@@ -654,11 +731,11 @@
                     </li>
                     <li class="connectable flex-row-align" style="padding: 10px 12px;">
                         <span class="icon"><i class="fa-solid fa-chess-knight"></i></span> 
-                        <div><strong>Strategic Advisory:</strong> Data-driven problem framing, governance design, and consulting mindset for ambiguous challenges.</div>
+                        <div><strong>Strategic Advisory:</strong> Delivering strategic insight and perspective, distilling complex problems to their critical points to guide executive decision-making.</div>
                     </li>
                     <li class="connectable flex-row-align" style="padding: 10px 12px;">
                         <span class="icon"><i class="fa-solid fa-arrows-spin"></i></span> 
-                        <div><strong>Adaptability:</strong> Rapidly pivoting between traditional risk frameworks and emerging AI paradigms.</div>
+                        <div><strong>Adaptability:</strong> Recognizing shifting priorities and conditions early, and adjusting approach to meet evolving goals and requirements.</div>
                     </li>
                     <li class="connectable flex-row-align" style="padding: 10px 12px;">
                         <span class="icon"><i class="fa-solid fa-brain"></i></span> 
@@ -738,6 +815,7 @@
                     <span class="tag trait-tag key-trait">Continuous Learning</span>
                     <span class="tag trait-tag key-trait">Builder Mindset</span>
                     <span class="tag trait-tag key-trait">Perseverance</span>
+                    <span class="tag trait-tag key-trait">Systemic Thinking</span>
                     <span class="tag trait-tag">Judgement</span>
                     <span class="tag trait-tag">Integrity</span>
                     <span class="tag trait-tag">Resilience</span>
